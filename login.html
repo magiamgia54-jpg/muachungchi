@@ -5,7 +5,6 @@
 <title>Đăng nhập</title>
 
 <style>
-
 body{
 margin:0;
 font-family:Arial;
@@ -22,12 +21,6 @@ padding:40px;
 border-radius:12px;
 width:320px;
 color:white;
-box-shadow:0 10px 40px rgba(0,0,0,0.5);
-}
-
-h2{
-text-align:center;
-margin-bottom:20px;
 }
 
 input{
@@ -47,24 +40,7 @@ background:#3b82f6;
 border:none;
 border-radius:8px;
 color:white;
-font-size:16px;
-cursor:pointer;
 }
-
-button:hover{
-background:#2563eb;
-}
-
-.link{
-text-align:center;
-margin-top:15px;
-}
-
-.link a{
-color:#3b82f6;
-text-decoration:none;
-}
-
 </style>
 </head>
 
@@ -74,16 +50,33 @@ text-decoration:none;
 
 <h2>Đăng nhập</h2>
 
-<input type="text" placeholder="Tên tài khoản">
-<input type="password" placeholder="Mật khẩu">
+<input id="user" placeholder="Tên tài khoản">
+<input id="pass" type="password" placeholder="Mật khẩu">
 
-<button>Đăng nhập</button>
-
-<div class="link">
-Chưa có tài khoản? <a href="register.html">Đăng ký</a>
-</div>
+<button onclick="login()">Đăng nhập</button>
 
 </div>
+
+<script>
+
+function login(){
+
+let u=document.getElementById("user").value
+let p=document.getElementById("pass").value
+
+if(u==localStorage.getItem("user") && p==localStorage.getItem("pass")){
+
+window.location.href="welcome.html"
+
+}else{
+
+alert("Sai tài khoản!")
+
+}
+
+}
+
+</script>
 
 </body>
 </html>
