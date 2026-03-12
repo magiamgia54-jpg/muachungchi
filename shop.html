@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Store Chứng Chỉ IOS</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#0f172a,#1e293b);
+color:white;
+text-align:center;
+}
+
+/* HEADER */
+
+.header{
+padding:25px;
+font-size:26px;
+font-weight:bold;
+}
+
+/* CONTAINER */
+
+.container{
+display:flex;
+flex-wrap:wrap;
+justify-content:center;
+gap:20px;
+padding:20px;
+}
+
+/* CARD */
+
+.card{
+background:#1e293b;
+width:260px;
+padding:25px;
+border-radius:16px;
+box-shadow:0 10px 30px rgba(0,0,0,0.5);
+transition:0.3s;
+}
+
+.card:hover{
+transform:translateY(-6px);
+}
+
+.card h2{
+margin-top:0;
+}
+
+.price{
+font-size:24px;
+color:#38bdf8;
+margin:10px 0;
+}
+
+button{
+background:#3b82f6;
+border:none;
+padding:12px 25px;
+border-radius:8px;
+color:white;
+font-size:15px;
+cursor:pointer;
+}
+
+button:hover{
+background:#2563eb;
+}
+
+/* POPUP */
+
+#pay{
+display:none;
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+justify-content:center;
+align-items:center;
+}
+
+.paybox{
+background:white;
+color:black;
+width:320px;
+padding:20px;
+border-radius:18px;
+text-align:center;
+}
+
+.name{
+font-size:20px;
+font-weight:bold;
+}
+
+.stk{
+font-size:18px;
+margin-bottom:10px;
+}
+
+.qr{
+width:220px;
+margin:10px auto;
+}
+
+.close{
+background:#ef4444;
+margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+Store Chứng Chỉ IOS
+</div>
+
+<div class="container">
+
+<div class="card">
+<h2>Esign</h2>
+<p>Chứng chỉ ký app IOS</p>
+<div class="price">100.000đ</div>
+<button onclick="buy()">Mua ngay</button>
+</div>
+
+<div class="card">
+<h2>Ksign</h2>
+<p>Ký app không revoke</p>
+<div class="price">120.000đ</div>
+<button onclick="buy()">Mua ngay</button>
+</div>
+
+<div class="card">
+<h2>VIP Sign</h2>
+<p>Chứng chỉ cao cấp</p>
+<div class="price">200.000đ</div>
+<button onclick="buy()">Mua ngay</button>
+</div>
+
+</div>
+
+<!-- POPUP QR -->
+
+<div id="pay">
+
+<div class="paybox">
+
+<h3>Quét mã để chuyển tiền</h3>
+
+<div class="name">LY VAN THANG</div>
+<div class="stk">23935211</div>
+
+<p>VietQR • Napas 24/7</p>
+
+<img src="qr.png" class="qr">
+
+<br>
+
+<button class="close" onclick="closePay()">Đóng</button>
+
+</div>
+
+</div>
+
+<script>
+
+function buy(){
+document.getElementById("pay").style.display="flex"
+}
+
+function closePay(){
+document.getElementById("pay").style.display="none"
+}
+
+</script>
+
+</body>
+</html>
