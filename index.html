@@ -2,7 +2,10 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
+
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+
 <title>IOS Sign Store</title>
 
 <style>
@@ -10,139 +13,215 @@
 body{
 margin:0;
 font-family:Arial;
-background:linear-gradient(135deg,#0f172a,#1e293b);
+background:linear-gradient(135deg,#07122a,#0b1f44);
 color:white;
+}
+
+/* LOGIN + REGISTER */
+
+.box{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+}
+
+.form{
+background:#132544;
+padding:30px;
+border-radius:12px;
+width:300px;
+text-align:center;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+
+input{
+width:90%;
+padding:12px;
+margin:8px 0;
+border:none;
+border-radius:8px;
+}
+
+button{
+width:95%;
+padding:12px;
+border:none;
+border-radius:8px;
+background:#3b82f6;
+color:white;
+cursor:pointer;
+}
+
+.link{
+font-size:14px;
+margin-top:8px;
+}
+
+.link a{
+color:#38bdf8;
+cursor:pointer;
+}
+
+/* MAIN */
+
+.main{
+display:none;
 }
 
 /* HEADER */
 
 .header{
 text-align:center;
-font-size:28px;
-padding:25px;
+padding:20px;
+font-size:22px;
 font-weight:bold;
 }
 
-/* STORE */
+/* WELCOME */
 
-.container{
+.welcome{
+text-align:center;
+background:#22c55e;
+color:white;
+padding:10px;
+margin:10px;
+border-radius:8px;
+}
+
+/* MENU */
+
+.menuBtn{
+position:absolute;
+left:15px;
+top:20px;
+font-size:24px;
+cursor:pointer;
+}
+
+.menu{
+display:none;
+position:fixed;
+left:0;
+top:0;
+width:200px;
+height:100%;
+background:#0f1f3d;
+padding:20px;
+}
+
+.menu a{
+display:block;
+margin:15px 0;
+cursor:pointer;
+}
+
+/* SIGN */
+
+.signBox{
 display:flex;
-flex-wrap:wrap;
 justify-content:center;
-gap:20px;
+flex-wrap:wrap;
+gap:15px;
 padding:20px;
 }
 
 .card{
-background:#1e293b;
-width:260px;
-padding:25px;
-border-radius:16px;
+background:#152544;
+padding:20px;
+border-radius:12px;
+width:150px;
 text-align:center;
-box-shadow:0 10px 30px rgba(0,0,0,0.5);
-transition:0.3s;
-}
-
-.card:hover{
-transform:translateY(-6px);
 }
 
 .price{
-font-size:24px;
 color:#38bdf8;
 margin:10px 0;
 }
 
-button{
-background:#3b82f6;
-border:none;
-padding:12px 25px;
-border-radius:8px;
-color:white;
-font-size:15px;
-cursor:pointer;
-}
-
-button:hover{
-background:#2563eb;
-}
-
-/* APP IPA */
+/* APPS */
 
 .apps{
-margin-top:60px;
+display:grid;
+grid-template-columns:repeat(2,1fr);
+gap:12px;
 padding:20px;
-text-align:center;
-}
-
-.app-grid{
-display:flex;
-flex-wrap:wrap;
-justify-content:center;
-gap:20px;
-margin-top:20px;
+max-width:420px;
+margin:auto;
 }
 
 .app{
-background:#1e293b;
-padding:20px;
-width:150px;
+background:#152544;
+padding:15px;
 border-radius:12px;
 text-align:center;
-box-shadow:0 10px 20px rgba(0,0,0,0.4);
 }
 
 .app img{
-width:70px;
+width:40px;
+margin-bottom:6px;
 }
 
-.app button{
+.download{
 background:#22c55e;
-margin-top:8px;
-padding:8px 15px;
+padding:6px 14px;
+border-radius:6px;
+display:inline-block;
+margin-top:6px;
+font-size:12px;
 }
 
-/* QR POPUP */
+/* QR */
 
-#pay{
+.qrBox{
 display:none;
 position:fixed;
 top:0;
 left:0;
 width:100%;
 height:100%;
-background:rgba(0,0,0,0.7);
+background:rgba(0,0,0,0.8);
 justify-content:center;
 align-items:center;
 }
 
-.paybox{
+.qr{
 background:white;
 color:black;
-width:320px;
 padding:20px;
-border-radius:16px;
+border-radius:10px;
 text-align:center;
+width:300px;
 }
 
-.name{
-font-size:20px;
-font-weight:bold;
+.qr img{
+width:240px;
 }
 
-.stk{
-font-size:18px;
-margin-bottom:10px;
-}
-
-.qr{
-width:220px;
-margin:10px auto;
-}
-
-.close{
-background:red;
+.qr input{
+border:1px solid #ccc;
 margin-top:10px;
+}
+
+/* CONTACT */
+
+.contact{
+position:fixed;
+bottom:20px;
+right:15px;
+display:flex;
+flex-direction:column;
+gap:10px;
+}
+
+.contact a{
+background:#3b82f6;
+padding:10px 12px;
+border-radius:8px;
+color:white;
+text-decoration:none;
+font-size:14px;
 }
 
 </style>
@@ -150,132 +229,209 @@ margin-top:10px;
 
 <body>
 
-<div class="header">
-IOS Sign Store
+<!-- LOGIN -->
+
+<div class="box" id="loginBox">
+
+<div class="form">
+
+<h2>Đăng nhập</h2>
+
+<input id="loginUser" placeholder="Tài khoản">
+<input id="loginPass" type="password" placeholder="Mật khẩu">
+
+<button onclick="login()">Đăng nhập</button>
+
+<div class="link">
+Chưa có tài khoản? 
+<a onclick="showRegister()">Đăng ký</a>
 </div>
 
-<div class="container">
+</div>
+
+</div>
+
+<!-- REGISTER -->
+
+<div class="box" id="registerBox" style="display:none;">
+
+<div class="form">
+
+<h2>Đăng ký</h2>
+
+<input id="regUser" placeholder="Tài khoản">
+<input id="regPass" type="password" placeholder="Mật khẩu">
+
+<button onclick="register()">Tạo tài khoản</button>
+
+<div class="link">
+Đã có tài khoản? 
+<a onclick="showLogin()">Đăng nhập</a>
+</div>
+
+</div>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main" id="main">
+
+<div class="menuBtn" onclick="openMenu()">☰</div>
+
+<div class="header">IOS Sign Store</div>
+
+<div class="welcome" id="welcome">
+Chào mừng bạn đến với trang ký Esign của Thắng đẹp zaii
+</div>
+
+<div class="menu" id="menu">
+
+<a onclick="showNap()">💰 Nạp tiền</a>
+
+<a onclick="logout()">🚪 Đăng xuất</a>
+
+</div>
+
+<div class="signBox">
 
 <div class="card">
-<h2>Esign</h2>
+<h3>Esign</h3>
 <p>Ký app IOS</p>
 <div class="price">100.000đ</div>
-<button onclick="buy()">Mua ngay</button>
+<button onclick="showNap()">Mua ngay</button>
 </div>
 
 <div class="card">
-<h2>Ksign</h2>
-<p>Ký app không revoke</p>
+<h3>Ksign</h3>
+<p>Ký không revoke</p>
 <div class="price">120.000đ</div>
-<button onclick="buy()">Mua ngay</button>
+<button onclick="showNap()">Mua ngay</button>
 </div>
 
 <div class="card">
-<h2>VIP Sign</h2>
+<h3>VIP Sign</h3>
 <p>Chứng chỉ cao cấp</p>
 <div class="price">200.000đ</div>
-<button onclick="buy()">Mua ngay</button>
+<button onclick="showNap()">Mua ngay</button>
 </div>
 
 </div>
+
+<h2 style="text-align:center">App IPA Miễn Phí</h2>
 
 <div class="apps">
 
-<h2>App IPA Miễn Phí</h2>
+<div class="app"><img src="https://cdn-icons-png.flaticon.com/512/124/124010.png"><div>Facebook++</div><div class="download">Tải IPA</div></div>
 
-<div class="app-grid">
+<div class="app"><img src="https://cdn-icons-png.flaticon.com/512/1384/1384060.png"><div>YouTube++</div><div class="download">Tải IPA</div></div>
 
-<div class="app">
-<img src="https://img.icons8.com/color/96/facebook.png">
-<p>Facebook++</p>
-<button>Tải IPA</button>
-</div>
+<div class="app"><img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png"><div>TikTok++</div><div class="download">Tải IPA</div></div>
 
-<div class="app">
-<img src="https://img.icons8.com/color/96/youtube-play.png">
-<p>YouTube++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/tiktok.png">
-<p>TikTok++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/instagram-new.png">
-<p>Instagram++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/spotify.png">
-<p>Spotify++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/twitter.png">
-<p>Twitter++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/telegram-app.png">
-<p>Telegram++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/netflix.png">
-<p>Netflix++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/snapchat.png">
-<p>Snapchat++</p>
-<button>Tải IPA</button>
-</div>
-
-<div class="app">
-<img src="https://img.icons8.com/color/96/discord-logo.png">
-<p>Discord++</p>
-<button>Tải IPA</button>
-</div>
+<div class="app"><img src="https://cdn-icons-png.flaticon.com/512/2111/2111463.png"><div>Instagram++</div><div class="download">Tải IPA</div></div>
 
 </div>
 
 </div>
 
-<div id="pay">
+<!-- QR -->
 
-<div class="paybox">
+<div class="qrBox" id="qrBox">
 
-<h3>Quét mã để chuyển tiền</h3>
+<div class="qr">
 
-<div class="name">LY VAN THANG</div>
-<div class="stk">23935211</div>
+<h3>Quét QR ACB để nạp tiền</h3>
 
-<p>VietQR • Napas 24/7</p>
+<img src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD...(đã rút gọn)">
 
-<img src="qr.png" class="qr">
+<input placeholder="Nhập số tiền muốn nạp">
 
-<button class="close" onclick="closePay()">Đóng</button>
+<p>LY VAN THANG</p>
+<p>23935211</p>
+
+<button onclick="closeQR()">Đóng</button>
 
 </div>
+
+</div>
+
+<!-- CONTACT -->
+
+<div class="contact">
+
+<a href="https://zalo.me/0395251479">💬 Zalo 0395251479</a>
 
 </div>
 
 <script>
 
-function buy(){
-document.getElementById("pay").style.display="flex"
+function showRegister(){
+loginBox.style.display="none"
+registerBox.style.display="flex"
 }
 
-function closePay(){
-document.getElementById("pay").style.display="none"
+function showLogin(){
+registerBox.style.display="none"
+loginBox.style.display="flex"
+}
+
+function register(){
+
+localStorage.setItem("user",regUser.value)
+localStorage.setItem("pass",regPass.value)
+
+loginSuccess()
+
+}
+
+function login(){
+
+if(loginUser.value==localStorage.getItem("user") &&
+loginPass.value==localStorage.getItem("pass")){
+
+loginSuccess()
+
+}else{
+alert("Sai tài khoản")
+}
+
+}
+
+function loginSuccess(){
+
+loginBox.style.display="none"
+registerBox.style.display="none"
+main.style.display="block"
+
+setTimeout(()=>{
+welcome.style.display="none"
+},4000)
+
+}
+
+function openMenu(){
+
+menu.style.display=
+menu.style.display=="block"?"none":"block"
+
+}
+
+function logout(){
+
+location.reload()
+
+}
+
+function showNap(){
+
+qrBox.style.display="flex"
+
+}
+
+function closeQR(){
+
+qrBox.style.display="none"
+
 }
 
 </script>
