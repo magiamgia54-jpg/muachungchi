@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Chào mừng</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#0f172a;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+margin:0;
+}
+
+.popup{
+background:white;
+padding:30px;
+border-radius:10px;
+text-align:center;
+}
+
+button{
+margin-top:20px;
+padding:10px 20px;
+background:#3b82f6;
+color:white;
+border:none;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="popup">
+
+<h2 id="hello"></h2>
+
+<button onclick="go()">X</button>
+
+</div>
+
+<script>
+
+let h=new Date().getHours()
+
+if(h<12){
+document.getElementById("hello").innerText="🌅 Chào buổi sáng"
+}
+else{
+document.getElementById("hello").innerText="🌙 Chào buổi tối"
+}
+
+function go(){
+window.location.href="shop.html"
+}
+
+</script>
+
+</body>
+</html>
